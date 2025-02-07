@@ -42,7 +42,7 @@ CMD ["python", "-m", "gunicorn", "--bind", "0.0.0.0:5050", "--workers", "2", "--
 #    --error-logfile -
 
 # Set up Yandex.Cloud certificate
-RUN mkdir -p /root/.postgresql && \
-wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" \
-    --output-document /root/.postgresql/root.crt && \
-chmod 0600 /root/.postgresql/root.crt
+# RUN mkdir -p /root/.postgresql && \
+# wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" \
+#     --output-document /root/.postgresql/root.crt && \
+# chmod 0600 /root/.postgresql/root.crt

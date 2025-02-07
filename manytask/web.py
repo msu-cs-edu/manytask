@@ -47,7 +47,7 @@ def course_page() -> ResponseReturnValue:
         cache_delta = datetime.now(tz=cache_time.tzinfo) - cache_time
     except ValueError:
         cache_delta = timedelta(days=365)
-    if course.debug or cache_delta.total_seconds() > 3600:
+    if course.debug or cache_delta.total_seconds() > 60:
         storage_api.update_cached_scores()
         cache_time = datetime.fromisoformat(str(storage_api.get_scores_update_timestamp()))
         cache_delta = datetime.now(tz=cache_time.tzinfo) - cache_time

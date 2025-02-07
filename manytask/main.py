@@ -129,6 +129,8 @@ def create_app(*, debug: bool | None = None, test: bool = False) -> CustomFlask:
         }
     )
 
+    logger = logging.getLogger(__name__)
+
     # cache
     cache = FileSystemCache(app.app_config.cache_dir, threshold=0, default_timeout=0)
 
@@ -174,6 +176,7 @@ def create_app(*, debug: bool | None = None, test: bool = False) -> CustomFlask:
             cache=cache,
         )
     else:
+        logger.info('setting gdoc as storage')
         viewer_api = storage_api = gdoc.GoogleDocApi(
             base_url=app.app_config.gdoc_url,
             gdoc_credentials=json.loads(_gdoc_credentials_string),
@@ -217,8 +220,6 @@ def create_app(*, debug: bool | None = None, test: bool = False) -> CustomFlask:
 
     app.register_blueprint(api.bp)
     app.register_blueprint(web.bp)
-
-    logger = logging.getLogger(__name__)
 
     # debug updates
     if app.course.debug:
