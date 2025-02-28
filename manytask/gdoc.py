@@ -74,7 +74,7 @@ class PublicAccountsSheetOptions:
     BONUS_COLUMN: int = 5
     TOTAL_COLUMN: int = 6
     PERCENTAGE_COLUMN: int = 7
-    TASK_SCORES_START_COLUMN: int = 14
+    TASK_SCORES_START_COLUMN: int = 9
 
 
 class LoginNotFound(KeyError):

@@ -48,7 +48,7 @@ services:
             - html:/usr/share/nginx/html:rw
 
     manytask:
-        # image: manytask/manytask:latest  # set SPECIFIC version you'll use
+        image: manytask/manytask:latest  # set SPECIFIC version you'll use
         build:
             dockerfile: Dockerfile
             context: .
@@ -58,10 +58,10 @@ services:
             - "5050"
         env_file: .env
         environment:
-            VIRTUAL_HOST: manytask.org
+            VIRTUAL_HOST: msumanytask.ru
             VIRTUAL_PORT: 5050
-            LETSENCRYPT_HOST: manytask.org
-            LETSENCRYPT_EMAIL: no-reply@manytask.org
+            LETSENCRYPT_HOST: msumanytask.ru.
+            LETSENCRYPT_EMAIL: ypodlesov@gmail.com
         volumes:
             - cache:/cache
             - solutions:/solutions

@@ -3,7 +3,13 @@ DOCKER_COMPOSE_DEV := docker-compose.development.yml
 TEST_REQUIREMENTS := requirements.test.txt
 TESTS_DIR := tests
 
-.PHONY: dev test reset-dev clean-db lint lint-fix setup install-deps check format install-hooks run-hooks
+.PHONY: dev test reset-dev clean-db lint lint-fix setup install-deps check format install-hooks run-hooks docker-build docker-push
+
+docker-build:
+	docker build -t ypodlesov/manytask:1.0 -f Dockerfile .
+
+docker-push: docker-build
+	docker push ypodlesov/manytask:1.0
 
 check: format lint test
 
